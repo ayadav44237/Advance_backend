@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 const app=express();
+import userRouter from "./routes/user.routes.js"
 
 
 //app.use(cors()); this is also good but we can also givr more parameters like origin and more as per the requirement like origin, whitelisting etc given below;
@@ -28,4 +29,17 @@ app.use (express.static("public")) //when we need to use major put in public fol
 
 app.use(cookieParser());//cookieParser needs to access the cookie of server , send the cookie of server
 
-export {app};
+
+//routes  import
+app.get('/', (req, res) => {
+    res.send('Server is running');  // Respond with a simple message when accessing the root URL
+});
+
+//routes declaration
+app.use("/api/v1/users",userRouter)
+
+// app.listen(process.env.PORT, ()=>{
+//     console.log("server is listening on port 8000")
+// })
+
+export default app;

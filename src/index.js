@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 // import mongoose from "mongoose"; 
 // import {DB_NAME} from "./constant.js";
 import connectDB from "./db/index.js";
+import app from "./app.js"
 
 dotenv.config({
     path:'./env'
@@ -12,8 +13,8 @@ dotenv.config({
 connectDB()
 .then(()=>{
     try {
-        app.listen(process.env.PORT||8000,()=>{
-            console.log(`MongoDB Connectet at PORT: ${process.env.PORT}`)
+        app.listen(process.env.PORT||4000,()=>{
+            console.log(`Server Connectet at PORT: ${process.env.PORT}`)
         })
     } catch (error) {
          console.log("Error in connection DB",error)
@@ -27,15 +28,9 @@ connectDB()
 
 
 
+// import express from "express";
 
-
-
-
-
-
-import express from "express";
-
-const app=express();
+// const app=express();
 
 
 
